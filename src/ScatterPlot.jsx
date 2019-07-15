@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import Axis from './Axis';
+import Point from './Point';
 
 
 const  margin = {
@@ -59,12 +60,18 @@ class ScatterPlot extends Component {
             .domain([0, d3.max(data, x)])
             .range([0, width]);
         const xAxis = d3.axisBottom(xScale);
+        const xMap = (d) => {
+            return xScale(x(d));
+        }
         
         const y = (d) => d['count'];
         const yScale = d3.scaleLinear()
             .domain([0, d3.max(data, y)])
             .range([height, 0]);
         const yAxis = d3.axisLeft(yScale);
+        const yMap = (d) => {
+            return yScale(y(d));
+        }
 
         if (data) {
 
@@ -77,6 +84,11 @@ class ScatterPlot extends Component {
                     <g transform={innerContainer}>
                         <Axis h={height} axis={xAxis} axisType="x" />
                         <Axis h={height} axis={yAxis} axisType="y" />
+                        <Point 
+                            data={data}
+                            x={xMap}
+                            y={yMap} 
+                        />
                     </g>
                 </svg>
             )
