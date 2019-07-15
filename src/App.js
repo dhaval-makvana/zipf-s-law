@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-
+import ScatterPlot from './ScatterPlot';
 
 class App extends React.Component {
 
@@ -9,7 +9,7 @@ class App extends React.Component {
       <div className="App">
         <div className="card">
           <h3>Zipf's Law Visualization</h3>
-          
+          <ScatterPlot />
         </div>
       </div>
     )
