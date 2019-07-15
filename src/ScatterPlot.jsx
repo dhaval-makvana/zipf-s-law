@@ -24,30 +24,9 @@ class ScatterPlot extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        let dummy = [
-            {
-                word: 'this',
-                count: 140,
-                rank: 1
-            },
-            {
-                word: 'was',
-                count: 65,
-                rank: 2
-            },
-            {
-                word: 'trippy',
-                count: 31,
-                rank: 3
-            },{
-                word: 'yeah',
-                count: 12,
-                rank: 4
-            }
-        ]
-
+        let data = props.data;
         return {
-            data: dummy
+            data
         }
     }
 

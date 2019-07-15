@@ -30,4 +30,28 @@ module.exports = {
 
         return countObject;
     },
+    convertIntoPlotData: function convertIntoPlotData(inputObject) {
+
+        if (typeof(inputObject) !== 'object') {
+            throw Error("Function 'convertIntoPlotData' takes an object as input")
+        }
+
+        let objArray = Object.entries(inputObject);
+
+        objArray.sort((a, b) => {
+            return b[1] - a[1]
+        });
+
+        var result = objArray.map((d, i) => {
+            let tempObject = {}
+            tempObject.rank = i+1;
+            tempObject.word = d[0];
+            tempObject.count = d[1];
+            return tempObject;
+        });
+
+        console.log("util fucntion", result);
+
+        return result;
+    }
 }
